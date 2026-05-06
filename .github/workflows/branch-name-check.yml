@@ -1,0 +1,12 @@
+name: branch-name-check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+    branches: [develop, main]
+
+jobs:
+  validate-branch-name:
+    uses: DrinkBetter-AI/github-actions/.github/workflows/branch-name-check.yml@main
+    with:
+      branch_name: ${{ github.head_ref }}

@@ -1,0 +1,93 @@
+---
+alwaysApply: true
+---
+
+# Code Quality: Avoid Common Anti-Patterns (Legacy Cleanup)
+
+These rules are based on recurring issues found in this repo. Follow them for all new/changed code.
+
+## React hooks correctness
+
+- Do **not** suppress `react-hooks/exhaustive-deps` unless you can justify it with a comment explaining why the omitted dependency is safe and intentional.
+- Prefer making dependencies stable (e.g., move functions inside the effect, or wrap them properly) rather than disabling the rule.
+- Always clean up side-effects:
+  - `setTimeout`/`setInterval` → `clearTimeout`/`clearInterval`
+  - subscriptions/event listeners/observers → unsubscribe/remove in cleanup
+
+## `useMemo` / `useCallback` discipline
+
+- Do **not** add `useMemo` / `useCallback` “just in case”.
+- Only use them when at least one is true:
+  - a measurable perf issue exists, or
+  - a stable reference is required (e.g., dependency for another hook, memoized child relying on referential equality), or
+  - computation is heavy and runs frequently.
+- If you use them, ensure the dependency list is correct and complete.
+
+## Rendering lists: stable keys
+
+- Do **not** use array indexes for keys (`key={index}`, `key={i}`, `key={idx}`) in dynamic lists.
+- Use a stable, unique identifier from the data (id/slug/etc.). If none exists, create one in the data layer.
+- Index keys are acceptable only for static, never-reordered lists (e.g., fixed skeleton placeholders).
+
+## No unsafe HTML / XSS footguns
+
+- Avoid `dangerouslySetInnerHTML` for user/content fields.
+- If you must render HTML:
+  - document the trust boundary (where the HTML originates),
+  - sanitize HTML before rendering (and prefer allowing only a limited tag set),
+  - never pass raw user input directly.
+
+## SSR safety (Next.js)
+
+- Do **not** access `window`, `document`, `localStorage`, `sessionStorage`, or `navigator` at module scope.
+- In shared utilities, guard browser-only APIs:
+  - `if (typeof window === 'undefined') return ...`
+  - or isolate into client-only modules/components.
+- In interceptors/middleware/shared clients, never assume `window` exists.
+
+## TypeScript: no “type escape hatches” by default
+
+- Avoid `any`, `as any`, and `as unknown as T` in app code.
+- Avoid `// @ts-ignore` and `// @ts-expect-error` unless:
+  - you include a reason comment, and
+  - there is no safe alternative (preferred: correct types, narrowing, runtime validation).
+- Prefer explicit types and runtime validation at boundaries (API responses, cookies, external libs).
+
+## Bundling and imports
+
+- Avoid dynamic `require()` in application code. Prefer static `import` so bundlers can optimize and types can work.
+- If conditional importing is needed, prefer dynamic `import()` with a clear SSR/client boundary.
+
+## Barrel files (index.ts/index.tsx)
+
+- **Do not create** `index.ts` or `index.tsx` barrel files.
+- **Do not import** from index files (e.g., `from './index'`, `from './components'` when it resolves to an index file).
+- Always import directly from the specific file path where the component, function, type, or constant is defined.
+- Barrel files hurt tree-shaking, make dependency tracking harder, and can cause circular dependency issues.
+
+**Examples:**
+
+```typescript
+// ❌ Bad: Creating a barrel file
+// src/components/index.ts
+export * from './Button'
+export * from './Input'
+
+// ❌ Bad: Importing from a barrel/index file
+import { Button, Input } from '@/components'  // Resolves to index.ts
+import { Button } from './components'  // Resolves to index.ts
+import { Button } from './components/index'  // Explicit index import
+
+// ✅ Good: Import directly from the specific file
+import { VDButton } from '@library/vds/src/VDButton/VDButton'
+import { VDContainer } from '@library/vds/src/VDContainer/VDContainer'
+import { WineCard } from '@library/business-module/src/WineCard/WineCard'
+import { DashboardHeader } from './_components/DashboardHeader'
+import { Button } from './Button/Button'
+import { Input } from './Input/Input'
+```
+
+## Logging and debugging
+
+- Do **not** leave `console.log`/`console.warn`/`console.error` in production UI flows.
+- Prefer a centralized logger with levels and environment gating (or ensure logs are gated by an env flag and do not leak secrets/tokens/PII).

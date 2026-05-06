@@ -1,0 +1,15 @@
+name: PR Description Check
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+    branches:
+      - develop
+
+permissions:
+  pull-requests: read
+  issues: write
+
+jobs:
+  check-pr-description:
+    uses: DrinkBetter-AI/github-actions/.github/workflows/pr-description-check.yml@main

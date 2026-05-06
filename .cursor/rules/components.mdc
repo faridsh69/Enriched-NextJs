@@ -1,0 +1,102 @@
+---
+alwaysApply: false
+---
+
+# UI Components and Styling
+
+## UI Framework
+
+<!-- - Use Shadcn UI and Tailwind for components and styling -->
+
+- Use components from @/modules/ui and Tailwind for components and styling
+- Implement responsive design with Tailwind CSS using a mobile-first approach
+- Use `next/image` package for images
+
+## Component Length
+
+- Each UI component should not exceed 150 lines of code.
+- If a component grows beyond this, refactor it into smaller subcomponents to ensure maintainability and readability.
+
+## Props Destructuring
+
+- At the first line inside every component, destructure all props like:
+
+```typescript
+const { x, y } = props
+```
+
+- The props type should be named just `Props`, like:
+
+```typescript
+interface Props {
+  /* ... */
+}
+```
+
+Do not use prefixes or component-based names for the props interface.
+
+## Function Utils, Tiny Components, and Constant Objects Location
+
+- All function utilities, small (tiny) components, or constant objects that are only used inside the main component must be defined **below** the main component function in the same file.
+- **Order of definitions:**
+  1. Imports
+  2. Props interface (named `Props`)
+  3. Main exported component function
+  4. Tiny components, utility functions, and constants used only by the main component (defined below)
+- **Example:**
+  // ✅ Correct order
+  interface Props { /_ ... _/ }
+
+export const MainComponent = (props: Props) => {
+const { x, y } = props
+// ... component logic
+}
+
+// Tiny component defined below main component
+const TinyComponent = () => {
+return <div>...</div>
+}
+
+// ❌ Wrong: Tiny component above main component
+const TinyComponent = () => { /_ ... _/ }
+export const MainComponent = (props: Props) => { /_ ... _/ }
+
+## Data Fetching with react-query
+
+For API get requests to server use the `@tanstack/react-query` package:
+
+```typescript
+const siteSearchQuery = useQuery({
+  queryKey: [SITE_SEARCH_QUERY_KEY, 'defaults'],
+  queryFn: async () => {
+    const response = await getSiteSearchDefaults()
+
+    return transformSearchResults(response)
+  },
+  enabled: isOpen && !hasQuery
+})
+```
+
+## Loading Components
+
+Use the `ClipLoader` component to handle loading states:
+
+```typescript
+if (loading) {
+    return (
+      <div className='flex items-center justify-center py-12'>
+        <ClipLoader size={24} aria-label='Loading Spinner' />
+      </div>
+    )
+  }
+```
+
+## Custom Hooks
+
+- **Purpose:** Encapsulate stateful logic, especially for data fetching or complex UI interactions.
+- **Location:** Place custom hooks beside their related components.
+- **Naming:** Use the `use` prefix (e.g., `useAccounts.ts`).
+- **Simplicity:** Keep hooks focused on a single responsibility.
+- **Location:** Place custom hooks beside their related components.
+- **Naming:** Use the `use` prefix (e.g., `useAccounts.ts`).
+- **Simplicity:** Keep hooks focused on a single responsibility.

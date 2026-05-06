@@ -1,0 +1,173 @@
+:root {
+  /* Figma: Typography/Primary */
+  --theme-color-typography-primary: 0 0% 0%; /* #000000 */
+  /* Figma: Typography/Secondary */
+  --theme-color-typography-secondary: 0 0% 40%; /* #666666 */
+  /* Figma: Typography/Tertiary */
+  --theme-color-typography-tertiary: 0 0% 53%; /* #888888 */
+  /* Figma: Typography/Disabled */
+  --theme-color-typography-disabled: 0 0% 80%; /* #cccccc */
+
+  /* Figma: Main/Black */
+  --theme-color-main-black: 0 0% 0%; /* #000000 */
+  /* Figma: Main/Beige */
+  --theme-color-main-beige: 45 33% 96%; /* #f9f7f1 */
+  /* Figma: Main/White */
+  --theme-color-main-white: 0 0% 100%; /* #ffffff */
+
+  /* Figma: Separator/1 */
+  --theme-color-separator-1: 0 0% 90%; /* #e6e6e6 */
+  /* Figma: Separator/2 */
+  --theme-color-separator-2: 0 0% 95%; /* #f2f2f2 */
+  /* Figma: Separator/Stroke */
+  --theme-color-separator-stroke: 0 0% 85%; /* #d9d9d9 */
+
+  /* Figma: Bg/Orange-Pale */
+  --theme-color-bg-orange-pale: 45 100% 89%; /* #fff1c8 */
+  /* Figma: Bg/Green-Pale */
+  --theme-color-bg-green-pale: 100 37% 86%; /* #d7e9cc */
+  /* Figma: Bg/Blue-Pale */
+  --theme-color-bg-blue-pale: 223 54% 90%; /* #d5def4 */
+  /* Figma: Bg/Purple-Pale */
+  --theme-color-bg-purple-pale: 282 36% 85%; /* #decce6 */
+  /* Figma: Bg/Peach-Pale */
+  --theme-color-bg-peach-pale: 29 53% 86%; /* #eedac7 */
+  /* Figma: Bg/Yellow-Warm */
+  --theme-color-bg-yellow-warm: 45 94% 79%; /* #fce396 */
+  /* Figma: Bg/Gray-Warm */
+  --theme-color-bg-gray-warm: 55 18% 86%; /* #e2e0d5 */
+  /* Figma: Bg/Lemon-Bright */
+  --theme-color-bg-lemon-bright: 56 100% 79%; /* #fff894 */
+  /* Figma: Bg/Light-Gray */
+  --theme-color-bg-light-gray: 0 0% 96.1%; /* #f5f5f5 */
+  /* Figma: Bg/Mint */
+  --theme-color-bg-mint: 133 100% 88%; /* #c2ffd0 */
+
+  /* Figma: Additional/Orange */
+  --theme-color-additional-orange: 34 79% 89%; /* #fae7ce */
+  /* Figma: Additional/Yellow */
+  --theme-color-additional-yellow: 48 100% 88%; /* #fff3c3 */
+  /* Figma: Additional/Green */
+  --theme-color-additional-green: 56 50% 90%; /* #f3f1d7 */
+  /* Figma: Additional/Red */
+  --theme-color-additional-red: 4 47% 92%; /* #f4e3e2 */
+  /* Figma: Additional/Ruby */
+  --theme-color-additional-ruby: 353 61% 27%; /* #6e1b25 */
+
+  /* Figma: Health/Error */
+  --theme-color-health-error: 0 72% 46%; /* #c92121 */
+  /* Figma: Health/Warning */
+  --theme-color-health-warning: 34 81% 55%; /* #ea982e */
+  /* Figma: Health/Good */
+  --theme-color-health-good: 105 71% 43%; /* #47b920 */
+
+  /* Figma: Other/Hover */
+  --theme-color-hover: 0 0% 20%; /* #333333 */
+
+  /* Shadcn compatibility variables */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 3.9%;
+  --primary: 0 0% 9%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 0 0% 96.1%;
+  --secondary-foreground: 0 0% 9%;
+  --muted: 0 0% 96.1%;
+  --muted-foreground: 0 0% 45.1%;
+  --accent: 0 0% 96.1%;
+  --accent-foreground: 0 0% 9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 89.8%;
+  --input: 0 0% 89.8%;
+  --ring: 0 0% 3.9%;
+  --radius: 0.5rem;
+  --chart-1: 12 76% 61%;
+  --chart-2: 173 58% 39%;
+  --chart-3: 197 37% 24%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
+
+  --container-padding--mobile: 16px;
+
+  /* Container horizontal padding per breakpoint */
+  --theme-container-padding-md: 1.25rem;
+  --theme-container-padding-lg: 4rem;
+
+  /* Container max-widths (single source for Tailwind maxWidth and layout calcs) */
+  --theme-container-lg: 1452px;
+  --theme-container-xl: 1520px;
+
+  /* Voss AI Chat Widget */
+  --theme-chat-widget-width: 22.5rem; /* 360px */
+  --theme-chat-widget-gap: 1rem; /* 16px — gap between widget and content */
+  --theme-chat-widget-offset: calc(var(--theme-chat-widget-width) + var(--theme-chat-widget-gap));
+  --theme-chat-widget-layout-px: 0;
+  /* Distance from viewport edge to layout boundary (for fixed positioning) */
+  --theme-chat-widget-layout-inset: var(--theme-chat-widget-layout-px);
+  --theme-chat-widget-content-left: calc(
+    var(--theme-chat-widget-layout-inset) + var(--theme-chat-widget-offset)
+  );
+
+  /* Z-Index Layers - Semantic scale with 100-point gaps for flexibility */
+  --theme-z-hide: -1;
+  --theme-z-base: 0;
+  --theme-z-raised: 10;
+  --theme-z-fab: 50;
+  --theme-z-dropdown: 100;
+  --theme-z-sticky: 200;
+  --theme-z-fixed: 300;
+  --theme-z-modal-backdrop: 400;
+  --theme-z-modal: 500;
+  --theme-z-popover: 600;
+  --theme-z-toast: 700;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --theme-chat-widget-layout-px: 1rem; /* 16px */
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --theme-chat-widget-width: 25rem; /* 400px */
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --theme-chat-widget-gap: 2rem; /* 32px */
+    --theme-chat-widget-layout-px: 160px;
+  }
+}
+
+.dark {
+  --background: 0 0% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 0 0% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 0 0% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 9%;
+  --secondary: 0 0% 14.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 0 0% 14.9%;
+  --muted-foreground: 0 0% 63.9%;
+  --accent: 0 0% 14.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 14.9%;
+  --input: 0 0% 14.9%;
+  --ring: 0 0% 83.1%;
+  --chart-1: 220 70% 50%;
+  --chart-2: 160 60% 45%;
+  --chart-3: 30 80% 55%;
+  --chart-4: 280 65% 60%;
+  --chart-5: 340 75% 55%;
+}
