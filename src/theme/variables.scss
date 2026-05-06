@@ -60,6 +60,12 @@ $fonts: (
   --grey-700: #666666;
   --grey-800: #333333;
 
+  // Black
+  --primary-main: #333; // background
+  --primary-dark: #000; // main darker
+  --primary-light: #eee; // main lighter
+  --primary-inverse: var(--white); // text
+
   // Accent
   // --primary-main: #2563eb; // background
   // --primary-inverse: #ffffff; // text
@@ -73,10 +79,10 @@ $fonts: (
   // --primary-inverse: var(--white); // text
 
   // Indigo
-  --primary-main: #4338ca; // background
-  --primary-dark: #312e81; // main darker
-  --primary-light: #c7d2fe; // main lighter
-  --primary-inverse: var(--white); // text
+  // --primary-main: #4338ca; // background
+  // --primary-dark: #312e81; // main darker
+  // --primary-light: #c7d2fe; // main lighter
+  // --primary-inverse: var(--white); // text
 
   // Amber
   // --primary-main: #d97706; // background
