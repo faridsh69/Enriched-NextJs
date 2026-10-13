@@ -7,11 +7,12 @@ import styles from './CarsPage.module.scss'
 
 export const CarsPage = () => {
   return (
-    <>
       <div className='container'>
         <div className={themeStyles.row}>
           <div className={themeStyles.carLeftColumn}>
-            <div className={styles.leftSidebar}></div>
+            <div className={styles.leftSidebar}>
+              Left side bar
+            </div>
           </div>
           <div className={themeStyles.carCenterColumn}>
             <div className={styles.tabContent}>
@@ -19,11 +20,9 @@ export const CarsPage = () => {
             </div>
           </div>
           <div className={themeStyles.carRightColumn}>
-            <div className={styles.rightSidebar}>Create car button</div>
+            <div className={styles.rightSidebar}>Right side bar</div>
           </div>
         </div>
       </div>
-      <div className={styles.fixedMobileCreatePost}>Create your car</div>
-    </>
   )
 }
