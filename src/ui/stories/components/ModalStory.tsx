@@ -1,5 +1,5 @@
-import { useState } from 'react'
 import { Button, FontsEnum, Label, Modal, TextAlignEnum, TextInput, VariantsEnum } from '@/ui'
+import { useState } from 'react'
 
 import styles from '../UiKit.module.scss'
 
@@ -60,7 +60,7 @@ export const ModalStory = () => {
               font={FontsEnum.Text16}
               linesCount={3}
               textAlign='center'
-              label='Welcome to farid,sh69@gmail.com!'
+              label='Welcome to farid.sh69@gmail.com!'
             />
             <TextInput label='Name' placeholder='Name' />
             <TextInput label='Date of birth' type='date' placeholder='Email address' />

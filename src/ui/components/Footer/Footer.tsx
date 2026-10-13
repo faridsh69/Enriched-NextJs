@@ -50,7 +50,7 @@ export const Footer = () => {
         <div className={styles.bottom}>
           <div className={styles.copyright}>
             <Label
-              label={'Copyright © 2026 farid,sh69@gmail.com. All rights reserved'}
+              label={'Copyright © 2026 farid.sh69@gmail.com. All rights reserved'}
               color={ColorsEnum.White}
               font={FontsEnum.Text12}
             />
