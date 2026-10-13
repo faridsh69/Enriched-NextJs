@@ -1,6 +1,6 @@
 {
   "name": "next-best-practices-youtube",
-  "version": "0.3.0",
+  "version": "2.1.13",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack -p 3003",
